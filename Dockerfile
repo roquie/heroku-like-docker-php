@@ -1,5 +1,5 @@
 FROM webhippie/caddy:latest
-MAINTAINER Thomas Boerger <thomas@webhippie.de>
+MAINTAINER Roquie <roquie0@gmail.com>
 
 EXPOSE 8080
 
@@ -40,8 +40,7 @@ RUN apk update && \
     php7-simplexml \
     php7-tokenizer \
     php7-xmlwriter \
-    php7-fileinfo \
-    git && \
+    php7-fileinfo && \
   ln -sf \
     /usr/bin/php7 \
     /usr/bin/php && \
@@ -51,9 +50,6 @@ RUN apk update && \
 
 ADD rootfs /
 
-RUN curl -sS https://getcomposer.org/installer \
-  | php -- --install-dir=/usr/bin --filename=composer
-
 ARG VERSION
 ARG BUILD_DATE
 ARG VCS_REF
@@ -61,7 +57,7 @@ ARG VCS_REF
 LABEL org.label-schema.version=$VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE
 LABEL org.label-schema.vcs-ref=$VCS_REF
-LABEL org.label-schema.vcs-url="https://github.com/dockhippie/php.git"
+LABEL org.label-schema.vcs-url="https://github.com/roquie/heroku-like-docker-php.git"
 LABEL org.label-schema.name="PHP Caddy"
-LABEL org.label-schema.vendor="Thomas Boerger"
+LABEL org.label-schema.vendor="Roquie"
 LABEL org.label-schema.schema-version="1.0"

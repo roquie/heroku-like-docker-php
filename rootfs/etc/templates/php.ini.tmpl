@@ -39,7 +39,7 @@ zend.enable_gc = On
 ;zend.multibyte = Off
 ;zend.script_encoding =
 
-expose_php = On
+expose_php = {{ envInt "PHP_INI_EXPOSE" }}
 
 max_execution_time = {{ envInt "MAX_EXECUTION_TIME" }}
 max_input_time = {{ envInt "MAX_INPUT_TIME" }}

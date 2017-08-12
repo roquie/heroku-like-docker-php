@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-declare -x GITHUB_TOKEN
-[[ -z "${GITHUB_TOKEN}" ]] && GITHUB_TOKEN=""
-
 declare -x PHP_MEMORY_LIMIT
 [[ -z "${PHP_MEMORY_LIMIT}" ]] && PHP_MEMORY_LIMIT="1G"
 
@@ -33,5 +30,11 @@ declare -x PHP_MAX_REQUESTS
 declare -x PHP_PROCESS_IDLE_TIMEOUT
 [[ -z "${PHP_PROCESS_IDLE_TIMEOUT}" ]] && PHP_PROCESS_IDLE_TIMEOUT="10s"
 
-declare -x PHP_COMPOSER_INSTALL
-[[ -z "${PHP_COMPOSER_INSTALL}" ]] && PHP_COMPOSER_INSTALL="true"
+declare -x PHP_FPM_CLEAR_ENV
+[[ -z "${PHP_FPM_CLEAR_ENV}" ]] && PHP_FPM_CLEAR_ENV="no"
+
+declare -x PHP_INI_EXPOSE
+[[ -z "${PHP_INI_EXPOSE}" ]] && PHP_INI_EXPOSE="Off"
+
+declare -x CONFIGURE_CUSTOM
+[[ -z "${CONFIGURE_CUSTOM}" ]] && CONFIGURE_CUSTOM="false"

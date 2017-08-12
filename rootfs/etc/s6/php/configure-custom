@@ -2,11 +2,17 @@
 
 if [ "$CONFIGURE_CUSTOM" = "true" ]
 then
+  configure_customs
+fi
+
+function configure_customs () {
+    echo "> init customs"
+
     if [ -f ./custom ]
     then
       source ./custom
     fi
-    
+
     if [ -d ./custom.d ]
     then
       for FILE in $(find ./custom.d -type f -iname *.sh | sort)
@@ -14,4 +20,23 @@ then
         source ${FILE}
       done
     fi
-fi
+
+    find /etc/php7/custom.d -mindepth 1 -type d -print0 | while read -d $'\0' TEMPLATE
+    do
+      RELATIVENAME=${TEMPLATE//\/etc\/php7\/custom.d\//}
+
+      if [ ! -d "/etc/php7/conf.d/${RELATIVENAME}" ]
+      then
+        mkdir "/etc/php7/conf.d/${RELATIVENAME}"
+      fi
+    done
+
+    find /etc/php7/custom.d -mindepth 1 -type f -print0 | while read -d $'\0' TEMPLATE
+    do
+      RELATIVENAME=${TEMPLATE//\/etc\/php7\/custom.d\//}
+
+      ln -sf \
+        "/etc/php7/conf.d/${RELATIVENAME}" \
+        "/etc/php7/custom.d/${RELATIVENAME}"
+    done
+}
