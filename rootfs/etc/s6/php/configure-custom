@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$CONFIGURE_CUSTOM" = "true" ]
+then
+    if [ -f ./custom ]
+    then
+      source ./custom
+    fi
+    
+    if [ -d ./custom.d ]
+    then
+      for FILE in $(find ./custom.d -type f -iname *.sh | sort)
+      do
+        source ${FILE}
+      done
+    fi
+fi
