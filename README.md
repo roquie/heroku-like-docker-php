@@ -31,6 +31,21 @@ RUN chown -R caddy:caddy /srv/www
 ENV CADDY_WEBROOT /srv/www/public
 ```
 
+## Example enabling cronjob for Laravel tasks
+
+```bash
+FROM roquie/heroku-like-docker-php:latest
+
+COPY . /srv/www
+
+# Warning! You should be to run chown for files inside a Dockerfile, 
+# it needed for fast starting.
+RUN chown -R caddy:caddy /srv/www
+
+ENV CRON_ENABLED true
+RUN echo -e "* * * * * php /srv/www/artisan schedule:run >> /dev/null 2>&1\nMAILTO=email@example.com" >> /etc/crontabs/root
+```
+
 ## Principles
 
 Container should be just fast upped and fast runned, without pre-provisioning. 
@@ -63,6 +78,7 @@ ENV PHP_PROCESS_IDLE_TIMEOUT 10s
 ENV PHP_FPM_CLEAR_ENV no
 ENV PHP_INI_EXPOSE Off
 ENV CONFIGURE_CUSTOM false
+ENV CRON_ENABLED false
 ```
 
 ## Inherited environment variables
