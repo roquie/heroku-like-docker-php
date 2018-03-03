@@ -38,3 +38,9 @@ declare -x PHP_INI_EXPOSE
 
 declare -x CONFIGURE_CUSTOM
 [[ -z "${CONFIGURE_CUSTOM}" ]] && CONFIGURE_CUSTOM="false"
+
+declare -x PHP_RUN_USER
+[[ -z "${PHP_RUN_USER}" ]] && PHP_RUN_USER="caddy"
+
+declare -x PHP_RUN_GROUP
+[[ -z "${PHP_RUN_GROUP}" ]] && PHP_RUN_GROUP="caddy"
