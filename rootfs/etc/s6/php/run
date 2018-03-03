@@ -11,4 +11,4 @@ then
 fi
 
 echo "> starting php"
-exec /usr/sbin/php-fpm7
+exec /usr/sbin/php-fpm7 --allow-to-run-as-root
