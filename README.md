@@ -79,6 +79,8 @@ ENV PHP_FPM_CLEAR_ENV no
 ENV PHP_INI_EXPOSE Off
 ENV CONFIGURE_CUSTOM false
 ENV CRON_ENABLED false
+ENV PHP_RUN_USER caddy
+ENV PHP_RUN_GROUP caddy
 ```
 
 ## Inherited environment variables
@@ -94,22 +96,22 @@ You can be built extension from source:
 FROM roquie/heroku-like-docker-php:latest
 
 ENV PHP_EXT_BUILD_DEPS \
-		autoconf \
-		dpkg-dev dpkg \
-		file \
-		g++ \
-		gcc \
-		libc-dev \
-		make \
-		pcre-dev \
-		pkgconf \
-		re2c \
-		php7-dev \
-		coreutils \
-		curl-dev \
-		libedit-dev \
-		libxml2-dev \
-		openssl-dev
+    autoconf \
+    dpkg-dev dpkg \
+    file \
+    g++ \
+    gcc \
+    libc-dev \
+    make \
+    pcre-dev \
+    pkgconf \
+    re2c \
+    php7-dev \
+    coreutils \
+    curl-dev \
+    libedit-dev \
+    libxml2-dev \
+    openssl-dev
 
 RUN apk add --no-cache $PHP_EXT_BUILD_DEPS && \
     pecl install mongodb && \

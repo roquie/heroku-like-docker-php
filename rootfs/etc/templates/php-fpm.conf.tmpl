@@ -6,12 +6,12 @@ daemonize = no
 
 [www]
 clear_env = {{ envString "PHP_FPM_CLEAR_ENV" }}
-user = caddy
-group = caddy
+user = {{ envString "PHP_RUN_USER" }}
+group = {{ envString "PHP_RUN_GROUP" }}
 
 listen = 127.0.0.1:9000
-listen.owner = caddy
-listen.group = caddy
+listen.owner = {{ envString "PHP_RUN_USER" }}
+listen.group = {{ envString "PHP_RUN_GROUP" }}
 
 pm = ondemand
 pm.max_children = {{ envString "MAX_CHILDREN" }}
