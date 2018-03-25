@@ -40,7 +40,7 @@ declare -x CONFIGURE_CUSTOM
 [[ -z "${CONFIGURE_CUSTOM}" ]] && CONFIGURE_CUSTOM="false"
 
 declare -x PHP_RUN_USER
-[[ -z "${PHP_RUN_USER}" ]] && PHP_RUN_USER="caddy"
+[[ -z "${PHP_RUN_USER}" ]] && PHP_RUN_USER="nginx"
 
 declare -x PHP_RUN_GROUP
-[[ -z "${PHP_RUN_GROUP}" ]] && PHP_RUN_GROUP="caddy"
+[[ -z "${PHP_RUN_GROUP}" ]] && PHP_RUN_GROUP="nginx"

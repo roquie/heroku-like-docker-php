@@ -1,4 +1,4 @@
-FROM webhippie/caddy:latest
+FROM webhippie/nginx:latest
 MAINTAINER Roquie <roquie0@gmail.com>
 
 EXPOSE 8080
@@ -35,7 +35,6 @@ RUN apk update && \
     php7-sqlite3 \
     php7-xml \
     php7-zip \
-    php7-zlib \
     php7-mbstring \
     php7-simplexml \
     php7-tokenizer \
@@ -50,6 +49,9 @@ RUN apk update && \
 
 ADD rootfs /
 
+COPY index.html /srv/www
+RUN chown -R nginx:nginx /srv/www
+
 ARG VERSION
 ARG BUILD_DATE
 ARG VCS_REF
@@ -58,6 +60,6 @@ LABEL org.label-schema.version=$VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE
 LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.vcs-url="https://github.com/roquie/heroku-like-docker-php.git"
-LABEL org.label-schema.name="PHP Caddy"
+LABEL org.label-schema.name="PHP Nginx"
 LABEL org.label-schema.vendor="Roquie"
 LABEL org.label-schema.schema-version="1.0"

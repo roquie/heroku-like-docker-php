@@ -1,6 +1,6 @@
 # Heroku like Docker PHP container
 
-These are docker images for [PHP](https://secure.php.net) running on a [Caddy container](https://registry.hub.docker.com/u/webhippie/caddy/).
+These are docker images for [PHP](https://secure.php.net) running on a [Caddy container](https://registry.hub.docker.com/u/webhippie/nginx/).
 This container optimized for fast starting and using with PaaS like as: Heroku, Flynn, Deis Workflow and many others. 
 And for many popular PHP frameworks.
 
@@ -26,9 +26,9 @@ COPY . /srv/www
 
 # Warning! You should be to run chown for files inside a Dockerfile, 
 # it needed for fast starting.
-RUN chown -R caddy:caddy /srv/www
+RUN chown -R nginx:nginx /srv/www
 
-ENV CADDY_WEBROOT /srv/www/public
+ENV NGINX_WEBROOT /srv/www/public
 ```
 
 ## Example enabling cronjob for Laravel tasks
@@ -40,7 +40,7 @@ COPY . /srv/www
 
 # Warning! You should be to run chown for files inside a Dockerfile, 
 # it needed for fast starting.
-RUN chown -R caddy:caddy /srv/www
+RUN chown -R nginx:nginx /srv/www
 
 ENV CRON_ENABLED true
 RUN echo -e "* * * * * php /srv/www/artisan schedule:run >> /dev/null 2>&1\nMAILTO=email@example.com" >> /etc/crontabs/root
@@ -52,6 +52,10 @@ Container should be just fast upped and fast runned, without pre-provisioning.
 
 * Any dependencies, like as composer, npm/yarn, bower or `%PACKAGE_MANAGER%` should be installed outside of container.
 * Any long-operations must be used inside a Dockerfile
+
+## Upgrade from previous version
+
+* Change `CADDY_WEBROOT` env variable to `NGINX_WEBROOT`. Done.
 
 ## Volumes
 
@@ -79,8 +83,8 @@ ENV PHP_FPM_CLEAR_ENV no
 ENV PHP_INI_EXPOSE Off
 ENV CONFIGURE_CUSTOM false
 ENV CRON_ENABLED false
-ENV PHP_RUN_USER caddy
-ENV PHP_RUN_GROUP caddy
+ENV PHP_RUN_USER nginx
+ENV PHP_RUN_GROUP nginx
 ```
 
 ## Inherited environment variables

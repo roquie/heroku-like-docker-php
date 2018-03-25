@@ -10,5 +10,8 @@ then
   source ./configure-custom
 fi
 
+echo "> alpine version $(cat /etc/alpine-release)"
+echo "> php opcache enabled"
+
 echo "> starting php"
 exec /usr/sbin/php-fpm7 --allow-to-run-as-root
