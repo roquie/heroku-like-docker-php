@@ -22,11 +22,7 @@ ENV PHP_FPM_CLEAR_ENV yes
 ```bash
 FROM roquie/heroku-like-docker-php:latest
 
-COPY . /srv/www
-
-# Warning! You should be to run chown for files inside a Dockerfile, 
-# it needed for fast starting.
-RUN chown -R nginx:nginx /srv/www
+COPY --chown=nginx:nginx . /srv/www
 
 ENV NGINX_WEBROOT /srv/www/public
 ```
@@ -36,11 +32,7 @@ ENV NGINX_WEBROOT /srv/www/public
 ```bash
 FROM roquie/heroku-like-docker-php:latest
 
-COPY . /srv/www
-
-# Warning! You should be to run chown for files inside a Dockerfile, 
-# it needed for fast starting.
-RUN chown -R nginx:nginx /srv/www
+COPY --chown=nginx:nginx . /srv/www
 
 ENV CRON_ENABLED true
 RUN echo -e "* * * * * php /srv/www/artisan schedule:run >> /dev/null 2>&1\nMAILTO=email@example.com" >> /etc/crontabs/root
@@ -124,7 +116,7 @@ RUN apk add --no-cache $PHP_EXT_BUILD_DEPS && \
     pecl clear-cache
     # apk del $PHP_EXT_BUILD_DEPS
 
-ENV CADDY_WEBROOT /srv/www/public
+ENV NGINX_WEBROOT /srv/www/public
 ```
 
 ## Versions
