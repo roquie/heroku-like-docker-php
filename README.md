@@ -1,6 +1,6 @@
 # Heroku like Docker PHP container
 
-These are docker images for [PHP](https://secure.php.net) running on a [Caddy container](https://registry.hub.docker.com/u/webhippie/nginx/).
+These are docker images for [PHP](https://secure.php.net) running on a [Nginx container](https://registry.hub.docker.com/u/webhippie/nginx/).
 This container optimized for fast starting and using with PaaS like as: Heroku, Flynn, Deis Workflow and many others. 
 And for many popular PHP frameworks.
 
