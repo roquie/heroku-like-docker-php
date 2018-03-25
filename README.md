@@ -55,7 +55,9 @@ Container should be just fast upped and fast runned, without pre-provisioning.
 
 ## Upgrade from previous version
 
-* Change `CADDY_WEBROOT` env variable to `NGINX_WEBROOT`. Done.
+* Change `CADDY_WEBROOT` env variable to `NGINX_WEBROOT`.
+* Use `RUN chown -R nginx:nginx /srv/www`.
+* Done.
 
 ## Volumes
 
