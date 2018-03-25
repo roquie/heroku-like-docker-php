@@ -89,7 +89,7 @@ ENV PHP_RUN_GROUP nginx
 
 ## Inherited environment variables
 
-* [webhippie/caddy](https://github.com/dockhippie/caddy#available-environment-variables)
+* [webhippie/nginx](https://github.com/dockhippie/nginx#available-environment-variables)
 * [webhippie/alpine](https://github.com/dockhippie/alpine#available-environment-variables)
 
 ## How to works with MongoDB?
