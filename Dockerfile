@@ -38,6 +38,7 @@ RUN apk update && \
     php7-mbstring \
     php7-simplexml \
     php7-tokenizer \
+    php7-xmlreader \
     php7-xmlwriter \
     php7-fileinfo && \
   ln -sf \
