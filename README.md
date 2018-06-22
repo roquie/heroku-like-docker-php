@@ -79,6 +79,7 @@ ENV CONFIGURE_CUSTOM false
 ENV CRON_ENABLED false
 ENV PHP_RUN_USER nginx
 ENV PHP_RUN_GROUP nginx
+ENV PHP_OPCACHE_ENABLED 1
 ```
 
 ## Inherited environment variables

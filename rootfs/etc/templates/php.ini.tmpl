@@ -352,8 +352,8 @@ ldap.max_links = -1
 ;dba.default_handler =
 
 [opcache]
-opcache.enable = 1
-;opcache.enable_cli = 0
+opcache.enable = {{ envString "PHP_OPCACHE_ENABLED" }}
+opcache.enable_cli = {{ envString "PHP_OPCACHE_ENABLED" }}
 opcache.memory_consumption = 192
 opcache.interned_strings_buffer = 16
 opcache.max_accelerated_files = 100000
