@@ -44,3 +44,6 @@ declare -x PHP_RUN_USER
 
 declare -x PHP_RUN_GROUP
 [[ -z "${PHP_RUN_GROUP}" ]] && PHP_RUN_GROUP="nginx"
+
+declare -x PHP_OPCACHE_ENABLED
+[[ -z "${PHP_OPCACHE_ENABLED}" ]] && PHP_OPCACHE_ENABLED="1"
