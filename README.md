@@ -1,3 +1,10 @@
+# Docker-image DEPRECATED, please use the best replacement for it: https://github.com/roquie/docker-php-webapp
+
+
+
+--------------------
+
+
 # Heroku like Docker PHP container
 
 These are docker images for [PHP](https://secure.php.net) running on a [Nginx container](https://registry.hub.docker.com/u/webhippie/nginx/).
