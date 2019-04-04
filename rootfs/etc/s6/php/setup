@@ -2,7 +2,7 @@
 source /usr/bin/entrypoint
 
 echo "> writing php config"
-/usr/bin/gomplate -V \
+/usr/bin/gomplate \
     -o /etc/php7/php.ini \
     -f /etc/templates/php.ini.tmpl
 
@@ -13,7 +13,7 @@ then
 fi
 
 echo "> writing fpm config"
-/usr/bin/gomplate -V \
+/usr/bin/gomplate \
     -o /etc/php7/php-fpm.conf \
     -f /etc/templates/php-fpm.conf.tmpl
 
@@ -22,3 +22,5 @@ then
   /bin/s6-svscanctl -t /etc/s6
   exit 1
 fi
+
+echo "> php version is: $(php -r 'echo phpversion();')"

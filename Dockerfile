@@ -7,9 +7,11 @@ WORKDIR /srv/www
 ENTRYPOINT ["/usr/bin/entrypoint"]
 CMD ["/bin/s6-svscan", "/etc/s6"]
 
+ENV NGINX_WEBROOT /srv/www
+
 RUN apk update && \
   apk upgrade && \
-  apk add \
+  apk add --clean \
     php7 \
     php7-fpm \
     php7-ctype \
@@ -40,18 +42,18 @@ RUN apk update && \
     php7-tokenizer \
     php7-xmlreader \
     php7-xmlwriter \
-    php7-fileinfo && \
-  ln -sf \
+    php7-fileinfo \
+    && ln -sf \
     /usr/bin/php7 \
-    /usr/bin/php && \
-  rm -rf \
+    /usr/bin/php \
+    && rm -rf \
     /var/cache/apk/* \
-    /etc/php7/*
+    /etc/php7/* \
+    && chown -R nginx:nginx /srv/www
 
 ADD rootfs /
 
-COPY index.html /srv/www
-RUN chown -R nginx:nginx /srv/www
+COPY index.php /srv/www
 
 ARG VERSION
 ARG BUILD_DATE

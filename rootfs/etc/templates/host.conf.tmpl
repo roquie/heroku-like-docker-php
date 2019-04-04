@@ -1,6 +1,6 @@
 listen 8080;
 
-root {{ getenv "WEBROOT" }};
+root {{ getenv "NGINX_WEBROOT" }};
 index index.php index.html index.htm;
 
 disable_symlinks off;
