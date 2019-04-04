@@ -1,6 +1,6 @@
 listen 8080;
 
-root {{ envString "WEBROOT" }};
+root {{ getenv "WEBROOT" }};
 index index.php index.html index.htm;
 
 disable_symlinks off;

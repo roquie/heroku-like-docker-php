@@ -5,7 +5,7 @@ BUILD_DATE = $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
 VCS_REF = $(shell git rev-parse --short HEAD)
 
 
-build:
+image:
 	docker build \
       --build-arg VERSION=$(VERSION) \
       --build-arg BUILD_DATE=$(BUILD_DATE) \

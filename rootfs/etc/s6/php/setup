@@ -2,9 +2,9 @@
 source /usr/bin/entrypoint
 
 echo "> writing php config"
-/usr/bin/templater -d -p php \
-  -o /etc/php7/php.ini \
-  /etc/templates/php.ini.tmpl
+/usr/bin/gomplate -V \
+    -o /etc/php7/php.ini \
+    -f /etc/templates/php.ini.tmpl
 
 if [[ $? -ne 0 ]]
 then
@@ -13,9 +13,9 @@ then
 fi
 
 echo "> writing fpm config"
-/usr/bin/templater -d -p php \
-  -o /etc/php7/php-fpm.conf \
-  /etc/templates/php-fpm.conf.tmpl
+/usr/bin/gomplate -V \
+    -o /etc/php7/php-fpm.conf \
+    -f /etc/templates/php-fpm.conf.tmpl
 
 if [[ $? -ne 0 ]]
 then
