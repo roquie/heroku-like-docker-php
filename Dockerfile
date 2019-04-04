@@ -53,7 +53,7 @@ RUN apk update && \
 
 ADD rootfs /
 
-COPY index.php /srv/www
+COPY index.html /srv/www
 
 ARG VERSION
 ARG BUILD_DATE
